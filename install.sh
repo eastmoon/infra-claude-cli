@@ -34,6 +34,26 @@ else
     echo "[+] Package 'uv' installed."
 fi
 
+## Install nodejs
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if [ ! $(command -v nvm) ]; then
+  echo "[-] Package 'nvm' not find, install it."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+else
+  echo "[+] Package 'nvm' installed."
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if [ ! $(command -v node) ]; then
+  echo "[-] Package 'node' not find, install it."
+  nvm install --lts
+  nvm use --lts
+else
+  echo "[+] Package 'node' installed."
+fi
+
 ## Install claude CLI
 if [ ! $(command -v claude) ]; then
     echo "[-] Package 'claude' not find, install it."
